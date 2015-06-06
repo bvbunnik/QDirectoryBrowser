@@ -14,6 +14,7 @@ class DirectoryBrowser : public QDialog
 
 	public:
         explicit DirectoryBrowser(QWidget *parent = 0);
+        explicit DirectoryBrowser(QWidget *parent = 0, QString Caption = QString());
 		~DirectoryBrowser();
 		QString getDirectory();
 
@@ -25,7 +26,8 @@ class DirectoryBrowser : public QDialog
     private:
 		Ui::DirectoryBrowser *ui;
 		QFileSystemModel *dirModel;
-		QString mDirectory;
+        QString mDirectory, mCaption;
+
 };
 
 #endif // DIRECTORYBROWSER_H

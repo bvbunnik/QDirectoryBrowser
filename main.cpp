@@ -4,7 +4,7 @@
 int main(int argc, char *argv[])
 {
 	QApplication a(argc, argv);
-    DirectoryBrowser w;
+    DirectoryBrowser w(0, "I will browse!");
     w.show();
 	return a.exec();
 }

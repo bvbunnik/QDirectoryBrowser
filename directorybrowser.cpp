@@ -18,6 +18,26 @@ DirectoryBrowser::DirectoryBrowser(QWidget *parent) :
 	ui->treeView->hideColumn(3);
     ui->treeView->setCurrentIndex(dirModel->setRootPath(mDirectory));
     ui->pathEdit->setText(mDirectory);
+
+}
+
+DirectoryBrowser::DirectoryBrowser(QWidget *parent, QString caption) :
+    QDialog(parent),
+    ui(new Ui::DirectoryBrowser)
+{
+    ui->setupUi(this);
+    ui->titleLabel->setText(caption);
+    mDirectory = "c:/";
+    dirModel = new QFileSystemModel(this);
+    dirModel->setFilter(QDir::NoDotAndDotDot | QDir::Dirs);
+    dirModel->setRootPath(dirModel->myComputer().toString());
+
+    ui->treeView->setModel(dirModel);
+    ui->treeView->hideColumn(1);
+    ui->treeView->hideColumn(2);
+    ui->treeView->hideColumn(3);
+    ui->treeView->setCurrentIndex(dirModel->setRootPath(mDirectory));
+    ui->pathEdit->setText(mDirectory);
 }
 
 DirectoryBrowser::~DirectoryBrowser()
